@@ -1,0 +1,28 @@
+a Tipo: intAbsolute addr: 0
+b Tipo: charAbsolute addr: 2
+c Tipo: ArrayAbsolute addr: 3
+h Tipo: ArrayAbsolute addr: 23
+			portal Tipo: intRelative addr: 0
+			codigoPostal Tipo: intRelative addr: 2
+d1 Tipo: DireccionAbsolute addr: 47
+d2 Tipo: DireccionAbsolute addr: 51
+			edad Tipo: intRelative addr: 0
+			direccion Tipo: DireccionRelative addr: 2
+f Tipo: ArrayAbsolute addr: 55
+			cif Tipo: ArrayRelative addr: 0
+			empleados Tipo: ArrayRelative addr: 9
+microsoft Tipo: EmpresaAbsolute addr: 91
+Parametros de Función: dobleSuma:
+			b Tipo: intRelative addr: 4
+			a Tipo: intRelative addr: 6
+Locales de Función: dobleSuma:
+			local Tipo: intRelative addr: -2
+Parametros de Función: escribeEdad:
+			num Tipo: intRelative addr: 4
+Locales de Función: escribeEdad:
+z Tipo: intAbsolute addr: 160
+Parametros de Función: main:
+Locales de Función: main:
+			v Tipo: ArrayRelative addr: -28
+			pepe Tipo: PersonaRelative addr: -8
+			local Tipo: intRelative addr: -2

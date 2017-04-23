@@ -1,0 +1,180 @@
+#source "../input/ejemplo.txt"
+CALL main
+HALT
+#line 53
+dobleSuma:
+ENTER 2
+#line 56
+PUSHa BP
+PUSHi -2
+ADDi
+PUSHa BP
+PUSHi 6
+ADDi
+LOADi
+PUSHa BP
+PUSHi 4
+ADDi
+LOADi
+ADDi
+PUSHi 2
+MULi
+STOREi
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+PUSHi 2
+MULi
+RET 2, 2, 4
+#line 60
+escribeEdad:
+ENTER 0
+#line 61
+PUSHa 91
+PUSHi 9
+ADDi
+PUSHi 6
+PUSHa BP
+PUSHi 4
+ADDi
+LOADi
+MULi
+ADDi
+PUSHi 0
+ADDi
+LOADi
+OUTi
+PUSHb 32
+OUTb
+RET 0, 0, 2
+#line 64
+main:
+ENTER 28
+#line 71
+PUSHa BP
+PUSHi -8
+ADDi
+PUSHi 0
+ADDi
+PUSHi 20
+STOREi
+#line 72
+PUSHa BP
+PUSHi -8
+ADDi
+PUSHi 2
+ADDi
+PUSHi 2
+ADDi
+INi
+STOREi
+#line 74
+PUSHa BP
+PUSHi -2
+ADDi
+PUSHi 0
+STOREi
+#line 75
+while0:
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+PUSHi 10
+LTi
+JZ finWhile0
+#line 76
+PUSHa BP
+PUSHi -28
+ADDi
+PUSHi 2
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+MULi
+ADDi
+PUSHf 2.0
+PUSHa 23
+PUSHi 8
+PUSHi 0
+MULi
+ADDi
+PUSHi 4
+PUSHi 3
+MULi
+ADDi
+LOADf
+ADDf
+F2I
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+CALL dobleSuma
+STOREi
+#line 77
+PUSHa BP
+PUSHi -2
+ADDi
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+PUSHi 1
+ADDi
+STOREi
+JMP while0
+finWhile0:
+#line 80
+PUSHa 0
+LOADi
+PUSHi 2
+GEi
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+PUSHi 5
+LTi
+AND
+JZ else1
+#line 81
+PUSHa 0
+LOADi
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+ADDi
+CALL escribeEdad
+RET 0, 28, 0
+JMP finIf1
+else1:
+#line 84
+PUSHa 2
+PUSHb 82
+STOREb
+finIf1:
+#line 87
+PUSHa 160
+LOADi
+PUSHi 2
+NEi
+JZ finIf2
+#line 88
+PUSHa BP
+PUSHi -28
+ADDi
+PUSHi 2
+PUSHa BP
+PUSHi -2
+ADDi
+LOADi
+MULi
+ADDi
+LOADi
+CALL escribeEdad
+finIf2:
+RET 0, 28, 0

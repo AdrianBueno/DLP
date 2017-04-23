@@ -1,0 +1,57 @@
+/*
+	SRC de pruebas.
+*/
+
+struct Transmision {
+	potencia:[5]int;
+};
+
+struct Motor {
+	hp:int;
+	weight:float;
+	cambio:Transmision;
+};
+
+struct Coche {
+	asientos:int;
+	motor:Motor;
+	marca:[15] char;
+};
+
+
+struct Persona {
+	edad:int;
+	coche:Coche;
+	meses:[12] int;
+};
+
+var personas: [5] Persona;
+var marca: [3]char;
+
+main() {
+	var i:int;
+	var j:int;
+	marca[0] = 'B';
+	marca[1] = 'M';
+	marca[2] = 'W';
+	i = 0;
+	j = 0;
+	while(i < 5){
+		while(j < 15){
+			if(j < 3){
+				personas[i].coche.marca[j] = marca[j]; //BMW está de moda.
+			}
+			if(j > 11){
+				println;
+				println personas[i].coche.marca[j-12];
+			}
+			j = j + 1;		
+		}
+		j = 0;
+		i = i + 1;
+		
+	}
+	
+		 
+}
+
