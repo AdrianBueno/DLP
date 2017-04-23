@@ -4,6 +4,7 @@ import ast.*;
 
 public class GestorErrores {
 
+	
 	public void error(String fase, String msg, Position position) {
 		String texto = "Error en " + fase + ": ";
 		if (position != null)
