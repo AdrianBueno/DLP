@@ -26,9 +26,9 @@ import ast.*;
  * 
  */
 public class Main {
-	//public static final String programa = "input/Test Generación de Código 0.txt";	// Entrada a usar durante el desarrollo
+	public static final String programa = "input/Test Generación de Código 1.txt";	// Entrada a usar durante el desarrollo
 	//public static final String programa = "input/input1.txt";
-	public static final String programa = "input/ejemplo.txt";
+	//public static final String programa = "input/ejemplo.txt";
 	//public static final String programa = "input/Hipoteca.txt";
 	public static void main(String[] args) throws Exception {
 		GestorErrores gestor = new GestorErrores();

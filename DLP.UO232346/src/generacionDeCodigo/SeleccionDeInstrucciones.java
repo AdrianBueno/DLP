@@ -225,7 +225,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 
 	@Override
 	public Object visit(SenReturn node, Object param) {
-		//sh.meta("#line " + node.getStart().getLine());
+		sh.meta("#line " + node.getStart().getLine()); //Si no hay expresion, hace falta setPositions en el sintactico
 		if(node.getRetorno() != null){
 			node.getRetorno().accept(valorVisitor,param);
 		}
