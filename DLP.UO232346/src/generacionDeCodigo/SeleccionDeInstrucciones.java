@@ -107,14 +107,10 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		}
 		sh.code("ENTER " + localDecBytes);
 		super.visit(node, param);
-		if(node.getTipo() instanceof TipoVoid){ //Por defecto
+		if(node.getTipo() instanceof TipoVoid){ //Por defecto aunque haya un return;
 			sh.meta("#RET " + node.getTipo().getNombreTipo());
 			sh.code("RET "+ localRetBytes +", " + localDecBytes + ", " + localParamBytes);
 		}
-		//if(node.getListaSentencias().size() == 0)
-		//	sh.code("RET "+ localRetBytes +", " + localDecBytes + ", " + localParamBytes);
-		//else if(!(node.getListaSentencias().get(node.getListaSentencias().size()-1) instanceof SenReturn)) 
-		//	sh.code("RET "+ localRetBytes +", " + localDecBytes + ", " + localParamBytes);
 		return param;
 	}
 
