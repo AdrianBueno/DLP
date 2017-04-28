@@ -17,7 +17,7 @@ import main.*;
 @SuppressWarnings(value = { "unchecked" })
 %}
 
-%token	VAR, INT, FLOAT, CHAR, STRUCT, PRINT, PRINTSP, PRINTLN, READ, CAST, IF, ELSE, WHILE, RETURN, LIT_INT, LIT_FLOAT, LIT_CHAR, IDENT, IGUAL, MAYORIGUAL, MENORIGUAL, DISTINTO, AND, OR, NOT
+%token	VAR, INT, FLOAT, CHAR, STRUCT, PRINT, PRINTSP, PRINTLN, READ, CAST, IF, ELSE, WHILE, RETURN, LIT_INT, LIT_FLOAT, LIT_CHAR, IDENT, IGUAL, MAYORIGUAL, MENORIGUAL, DISTINTO, AND, OR, NOT,
 
 /* Precedencias aquí --------------------------------------- */
 %nonassoc ELSE
@@ -30,6 +30,7 @@ import main.*;
 %nonassoc '(' ')'
 
 %%
+
 
 /* Añadir las reglas en esta sección ----------------------- */
 
@@ -99,7 +100,7 @@ expresion		: expresion '+' expresion													{ $$ = new ExAritmetica($1,"+",
 				| expresion '/' expresion													{ $$ = new ExAritmetica($1,"/",$3); }
 				| expresion AND expresion													{ $$ = new ExLogica($1,"&&",$3); }
 				| expresion OR expresion													{ $$ = new ExLogica($1,"||",$3); }
-				| NOT expresion																{ $$ = new ExNot($2); }
+				| NOT expresion															{ $$ = new ExNot($2); }
 				| expresion '<' expresion													{ $$ = new ExRelacional($1,"<",$3); }
 				| expresion '>' expresion													{ $$ = new ExRelacional($1,">",$3); }
 				| expresion IGUAL expresion													{ $$ = new ExRelacional($1,"==",$3); }
