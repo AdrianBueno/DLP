@@ -1,7 +1,23 @@
-global Tipo: floatAbsolute addr: 0
-Parametros de Función: doble:
-			valor Tipo: intRelative addr: 4
-Locales de Función: doble:
+			entero Tipo: intRelative addr: 0
+			caracter Tipo: charRelative addr: 2
+pareja Tipo: ParejaAbsolute addr: 0
+			edad Tipo: intRelative addr: 0
+			empleados Tipo: 2 * EmpleadoRelative addr: 0
+acme Tipo: 2 * EmpresaAbsolute addr: 3
+fibonacci Tipo: 8 * 3 * intAbsolute addr: 11
+Parametros de Función: p:
+Locales de Función: p:
+Parametros de Función: f:
+			paramInt Tipo: intRelative addr: 4
+			paramfloat Tipo: floatRelative addr: 6
+Locales de Función: f:
+			resultado Tipo: intRelative addr: -7
+			digito Tipo: charRelative addr: -5
+			localfloat Tipo: floatRelative addr: -4
+Parametros de Función: inicializa:
+Locales de Función: inicializa:
+			i Tipo: intRelative addr: -2
 Parametros de Función: main:
 Locales de Función: main:
-			local Tipo: intRelative addr: -2
+			j Tipo: intRelative addr: -4
+			i Tipo: intRelative addr: -2

@@ -28,34 +28,50 @@ public class SourceHelper {
 		return instance;
 	}
 	
-	private PrintWriter writer;
+	private PrintWriter writerMemory;
+	private PrintWriter writerCode;
 	private String formatSpace = "			";
 	
 	
-	public Writer getWriter() {
-		return writer;
+	public Writer getWriterMemory() {
+		return writerMemory;
 	}
 
-	public void setWriter(PrintWriter writer) {
-		this.writer = writer;
+	public void setWriterMemory(PrintWriter writer) {
+		this.writerMemory = writer;
+	}
+	
+	public PrintWriter getWriterCode() {
+		return writerCode;
+	}
+
+	public void setWriterCode(PrintWriter writerCode) {
+		this.writerCode = writerCode;
 	}
 
 	public void meta(String metadata){
-		writer.println(metadata);
+		writerCode.println(metadata);
 	}
 
 	public void code(String instruccion) {
-		writer.println(instruccion);
+		writerCode.println(instruccion);
 	}
 	
-	public void memory(DefVariable var){
-		if(var.getAmbito() == DefVariable.GLOBAL)
-			writer.println(var.getNombre() + " Tipo: " + var.getTipo().getNombreTipo() + "Absolute addr: " + var.getAddress());
-		else
-			writer.println(formatSpace+var.getNombre() + " Tipo: " + var.getTipo().getNombreTipo() + "Relative addr: " + var.getAddress());
+	public void directivaDireccion(DefVariable var){
+		if(var.getAmbito() == DefVariable.GLOBAL){
+			writerMemory.println(var.getNombre() + " Tipo: " + var.getTipo().getNombreTipo() + "Absolute addr: " + var.getAddress());
+			writerCode.println("#GLOBAL " + var.getNombre() + ":" + var.getTipo().getNombreTipo());
+		}else{
+			writerMemory.println(formatSpace+var.getNombre() + " Tipo: " + var.getTipo().getNombreTipo() + "Relative addr: " + var.getAddress());
+			writerCode.println();
+		}
 	}
-	public void label(String label) {
-		writer.println(label+":");
+	
+	public void codeLabel(String label) {
+		writerCode.println(label+":");
+	}
+	public void memoryLabel(String label) {
+		writerMemory.println(label+":");
 	}
 	
 		

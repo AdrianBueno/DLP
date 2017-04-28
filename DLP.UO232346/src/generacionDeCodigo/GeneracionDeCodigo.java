@@ -22,13 +22,12 @@ public class GeneracionDeCodigo {
 
 	public void genera(String sourceFile, AST raiz, Writer memory, Writer code) {
 		SourceHelper sh = SourceHelper.getInstance();
-		sh.setWriter(new PrintWriter(memory));
+		sh.setWriterMemory(new PrintWriter(memory));
+		sh.setWriterCode(new PrintWriter(code));
+		
 		
 		GestionDeMemoria gestion = new GestionDeMemoria();
 		raiz.accept(gestion, null);
-		
-		sh.setWriter(new PrintWriter(code));
-		
 		SeleccionDeInstrucciones selecciona = new SeleccionDeInstrucciones(sourceFile);
 		raiz.accept(selecciona, null);
 	}

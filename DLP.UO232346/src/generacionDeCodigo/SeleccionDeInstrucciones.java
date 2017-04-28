@@ -15,6 +15,7 @@ import ast.sentencias.SenRead;
 import ast.sentencias.SenReturn;
 import ast.sentencias.SenWhile;
 import ast.sentencias.Sentencia;
+import ast.tipos.TipoVoid;
 import generacionDeCodigo.templates.DireccionVisitor;
 import generacionDeCodigo.templates.ValorVisitor;
 import visitor.DefaultVisitor;
@@ -57,7 +58,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		sh.code("HALT");
 		super.visit(node, param);
 		if(!existMain) //Si no existe ninguna función, el programa debe seguir siendo válido.
-			sh.label("main");
+			sh.codeLabel("main");
 		return param;
 	}
 
@@ -89,21 +90,31 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 	 */
 	@Override
 	public Object visit(DefFuncion node, Object param) {
-		sh.meta("#line " + node.getStart().getLine());
+		sh.meta("#FUNC " + node.getNombre());
 		localParamBytes = 0; //Reiniciamos los valores de ambito de la funcion
 		localDecBytes = 0;
 		localRetBytes = node.getTipo().getBytes();
-		sh.label(node.getNombre());
+		sh.codeLabel(node.getNombre());
 		if(node.getNombre().equals("main"))
 			existMain = true;
-		for(DefVariable defVar : node.getListaParametros())
+		for(DefVariable defVar : node.getListaParametros()){
+			sh.meta("#PARAM " + defVar.getNombre() + ":" + defVar.getTipo().getNombreTipo());
 			localParamBytes += defVar.getTipo().getBytes();
-		for(DefVariable defVar : node.getListaDeclaraciones())
+		}
+		for(DefVariable defVar : node.getListaDeclaraciones()){
+			sh.meta("#LOCAL " + defVar.getNombre() + ":" + defVar.getTipo().getNombreTipo());
 			localDecBytes += defVar.getTipo().getBytes();
+		}
 		sh.code("ENTER " + localDecBytes);
 		super.visit(node, param);
-		if(!(node.getListaSentencias().get(node.getListaSentencias().size()-1) instanceof SenReturn)) 
+		if(node.getTipo() instanceof TipoVoid){ //Por defecto
+			sh.meta("#RET " + node.getTipo().getNombreTipo());
 			sh.code("RET "+ localRetBytes +", " + localDecBytes + ", " + localParamBytes);
+		}
+		//if(node.getListaSentencias().size() == 0)
+		//	sh.code("RET "+ localRetBytes +", " + localDecBytes + ", " + localParamBytes);
+		//else if(!(node.getListaSentencias().get(node.getListaSentencias().size()-1) instanceof SenReturn)) 
+		//	sh.code("RET "+ localRetBytes +", " + localDecBytes + ", " + localParamBytes);
 		return param;
 	}
 
@@ -196,15 +207,15 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		if(node.existElse())
 			sh.code("JMP finIf"+ i);
 		else
-			sh.label("finIf"+ i);
+			sh.codeLabel("finIf"+ i);
 		/*
 		 * Si existe un else, creamos la etiqueta else, recorremos sus sentencias y creamos la etiqueta finIf al final.
 		 */
 		if(node.existElse()){
-			sh.label("else"+i);
+			sh.codeLabel("else"+i);
 			for(Sentencia sen : node.getSentenciasElse())
 				sen.accept(this, param);
-			sh.label("finIf"+i);
+			sh.codeLabel("finIf"+i);
 		}
 		return param;
 	}
@@ -213,13 +224,13 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 	public Object visit(SenWhile node, Object param) {
 		sh.meta("#line " + node.getStart().getLine());
 		int i = newLabel();
-		sh.label("while"+ i);
+		sh.codeLabel("while"+ i);
 		node.getCondicion().accept(valorVisitor, param);
 		sh.code("JZ finWhile"+ i);
 		for(Sentencia sen : node.getSentencias())
 			sen.accept(this, param);
 		sh.code("JMP while"+ i);
-		sh.label("finWhile"+i);
+		sh.codeLabel("finWhile"+i);
 		return param;
 	}
 
@@ -229,6 +240,7 @@ public class SeleccionDeInstrucciones extends DefaultVisitor {
 		if(node.getRetorno() != null){
 			node.getRetorno().accept(valorVisitor,param);
 		}
+		sh.meta("#RET " + node.getHisFunction().getTipo().getNombreTipo());
 		sh.code("RET " + localRetBytes + ", "+ localDecBytes + ", "+ localParamBytes );
 		return param;
 	}

@@ -20,7 +20,7 @@ public class TipoArray extends AbstractTipo {
 		this.tipoBase = tipo;
 		String temp = tamaño;
 		this.arraySize = Integer.parseInt(temp);
-		this.nombreTipo = "Array";
+		this.nombreTipo = this.arraySize+" * " + this.tipoBase.getNombreTipo();
 		this.bytes = this.tipoBase.getBytes() * this.arraySize;
 		searchForPositions(tipo);	// Obtener linea/columna a partir de los hijos
 	}
@@ -30,7 +30,7 @@ public class TipoArray extends AbstractTipo {
 		String temp = (tamaño instanceof Token) ? ((Token)tamaño).getLexeme() : (String) tamaño;
 		this.arraySize = Integer.parseInt(temp);
 		this.bytes = this.tipoBase.getBytes() * this.arraySize;
-		this.nombreTipo = "Array";
+		this.nombreTipo = this.arraySize+" * " + this.tipoBase.getNombreTipo();
 		searchForPositions(tipo, tamaño);	// Obtener linea/columna a partir de los hijos
 	}
 
