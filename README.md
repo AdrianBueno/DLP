@@ -1,2 +1,3 @@
 # DLP
-Práctica de compilador para lenguaje de programación.
+Ejemplo de las distintas fases de diseño de un lenguaje de programación.
+El proyecto contiene léxico, sintáctico, semántico y generación de código.
