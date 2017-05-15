@@ -1,0 +1,65 @@
+/*
+El léxico completo adaptado para la herramienta está en el paquete sintactico.
+Aquí he quitado las salidas con los returns para que se vea mas claramente las expresiones regulares
+aunque he dejado elementos reconocibles por la herramienta para que indicar que es cada expresión regular
+
+*/
+LETRA = [a-zA-ZñÑ_]										/*Incluyo la _*/
+DIGITO = [0-9]											/* Digito 1 número 0-9*/
+LIT_INT = {DIGITO}+										/* 1 o más dígitos son un entero*/
+LIT_FLOAT = {LIT_INT} "." {LIT_INT}						/*Reales con una parte entera y otra decimal*/
+LIT_CHAR = '.' | '\\n' | '\\r'
+IDENT = {LETRA}({LETRA}|{DIGITO})*						/**/
+COMENTARIO = (("/*"([^*]|\*+[^*/])*\*+"/")|("//".*))
+
+
+%%
+/* PALABRAS RESERVADAS*/
+
+var						
+float					
+int						
+char					
+struct					
+
+print					
+printsp					
+println					
+read					
+cast					
+	
+if						
+else					
+while					
+return					
+
+
+/* LITERALES */
+{LIT_INT}						
+{LIT_FLOAT}						
+{LIT_CHAR}						
+{IDENT}							
+
+/* OPERADORES */
+
+			/* Comparación */
+"=="							
+">="							
+"<="							
+"!="							
+			/* Lógicos */
+"&&"							
+"||"							
+"!"								
+
+
+/* -- Se aconseja dejar estas reglas al final ----------------------------------------------- */
+
+/* Aritméticos */
+[+*\-/<>,;:=()<>\.\[\]{}]		
+
+
+[ \n\r]
+"\t"		
+
+.			

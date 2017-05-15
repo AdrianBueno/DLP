@@ -1,0 +1,25 @@
+var counter:int;
+increment():int {
+	counter = counter + 1;
+	return counter;
+}
+
+main(){
+	var a:int;
+	var b:int;
+	a = 0;
+	b = 0;
+	println a;
+	println b;
+	a, b = 1, 2;
+	println a;
+	println b;
+	a, b = b, a;
+	println a;
+	println b;
+	counter = 5;
+	a, b = increment(), increment();
+	println a;
+	println b;
+
+}

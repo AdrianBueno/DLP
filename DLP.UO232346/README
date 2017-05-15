@@ -1,0 +1,6 @@
+El programa ha sido modificado para que la entrada de datos sea obtenida
+de ficheros en la carpeta input
+La salida se encontrará en la carpeta output en forma de instruciones con metadatos
+y otro fichero para las direcciones de memoria.
+
+Todos los documentos asociados a las práctica se encuentran en la carpeta doc

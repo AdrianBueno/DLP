@@ -1,0 +1,24 @@
+/*
+Examen mayo PRUEBAS
+Parte 1 b
+*/
+
+zero():int {
+	return 0;
+}
+
+main(){
+	var i:int;
+	i = 1;
+	
+	print i ^ i; //Sale 0
+	print i ^ !i; //Sale 1
+	print i ^ i ^ i; //Sale 1
+	
+	if(zero() ^ i){
+		print 't'; //Sale t
+	}
+	else{
+		print 'f';
+	}
+}

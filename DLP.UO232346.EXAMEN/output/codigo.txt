@@ -1,0 +1,23 @@
+
+
+#source "../input/input1.txt"
+CALL main
+HALT
+#FUNC main
+main:
+#LOCAL a:int
+#LOCAL b:float
+ENTER 6
+#line 7
+PUSHa BP
+PUSHi -2
+ADDi
+PUSHi 1
+PUSHa BP
+PUSHi -6
+ADDi
+PUSHf 1.5
+STOREf
+STOREi
+#RET Void
+RET 0, 6, 0

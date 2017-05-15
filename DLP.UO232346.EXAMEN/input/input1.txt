@@ -1,0 +1,10 @@
+
+
+main() {
+	var a:int;
+	var b:float;
+	
+	a, b = 1, 1.5;
+ 
+}
+

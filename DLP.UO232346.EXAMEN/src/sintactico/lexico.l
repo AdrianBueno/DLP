@@ -86,8 +86,8 @@ return					{ return Parser.RETURN ; }
 /* -- Se aconseja dejar estas reglas al final ----------------------------------------------- */
 
 /* Aritméticos */
-[+*\-/<>,;:=()<>\.\[\]{}]		{ return yytext().charAt(0); }
-
+[+*\-/<>,;:=()<>\.\[\]{}\^]		{ return yytext().charAt(0); }
+/* EXAMEN : Añado operador ^ con el escape*/
 {COMENTARIO}					{ }
 
 [ \n\r]		{ }

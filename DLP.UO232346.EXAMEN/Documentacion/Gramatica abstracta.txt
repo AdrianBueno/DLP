@@ -1,0 +1,41 @@
+CATEGORIES
+Declaracion, Expresion, Sentencia, Tipo, Literal
+
+NODES
+Programa		->	declaraciones:Declaracion*;
+
+DefVariable		:Declaracion	->	nombre:String tipo:Tipo;
+DefStruct		:Declaracion	->	nombre:String listaCampos:DefVariable*;
+DefFuncion		:Declaracion	->	nombre:String listaParametros:DefVariable* Tipo listaDeclaraciones:DefVariable* listaSentencias:Sentencia*;
+
+
+SenInvocacion:Sentencia,Expresion	->	nombre:String listaArgumentos:Expresion*;
+SenAsignacion:Sentencia		->	left:Expresion right:Expresion;
+SenPrint:Sentencia		->	expresion:Expresion;
+SenPrintSp:Sentencia		->	expresion:Expresion;
+SenPrintLn:Sentencia		->	expresion:Expresion;
+SenRead:Sentencia		->	expresion:Expresion;
+SenIf:Sentencia			->	condicion:Expresion sentenciasIf:Sentencia* sentenciasElse:Sentencia*;
+SenWhile:Sentencia		->	condicion:Expresion sentencias:Sentencia*;
+SenReturn:Sentencia		->	retorno:Expresion;
+
+ExAritmetica:Expresion		->	left:Expresion operador:string	right:Expresion;
+ExLogica:Expresion		->	left:Expresion operador:string	right:Expresion;
+ExRelacional:Expresion		->	left:Expresion operador:string	right:Expresion;
+ExNot:Expresion			->	expresion:Expresion;
+ExInvocacion:Expresion		->	nombre:String listaArgumentos:Expresion*;
+ExIndice:Expresion		->	left:Expresion indice:Expresion;
+ExCampo:Expresion		->	left:Expresion campo:Expresion;
+ExCast:Expresion		->	to:Tipo from:Expresion;
+
+LitEntero:Expresion, Literal 	->	valor:String;
+LitReal:Expresion, Literal	->	valor:String;
+LitCaracter:Expresion, Literal	->	valor:String;
+Variable:Expresion		->	nombre:String;
+
+TipoEntero:Tipo			->;
+TipoReal:Tipo			->;
+TipoCaracter:Tipo		->;
+TipoVariable:Tipo		-> nombre:String;
+TipoArray:Tipo			-> tipo:Tipo tamaño:String;
+TipoVoid:Tipo			->;

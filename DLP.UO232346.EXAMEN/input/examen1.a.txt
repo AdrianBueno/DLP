@@ -1,0 +1,17 @@
+/*
+Examen mayo PRUEBAS
+Parte 1 A
+*/
+
+zero():float {
+	return 0.0;
+}
+
+main(){
+	var i:int;
+	var c:char;
+	
+	i=1;
+	c= i ^ i; //Error
+	print i ^ zero(); //error
+}

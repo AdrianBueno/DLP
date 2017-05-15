@@ -1,0 +1,14 @@
+main(){
+
+var a:int;
+var b:int;
+var c:char;
+
+a = 1,2;
+a, b = 1;
+a, 2 = 1, 2;
+a, c = 1,2;
+
+
+
+}
