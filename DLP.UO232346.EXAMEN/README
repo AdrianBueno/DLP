@@ -1,6 +1,21 @@
-El programa ha sido modificado para que la entrada de datos sea obtenida
-de ficheros en la carpeta input
-La salida se encontrar� en la carpeta output en forma de instruciones con metadatos
-y otro fichero para las direcciones de memoria.
+Los cambios consisten en añadir una la expresión binaria
+expresion '^' expresion
 
-Todos los documentos asociados a las pr�ctica se encuentran en la carpeta doc
+Que será una operación lógica XOR.
+
+Se ha modificado el léxico, sintáctico y la generación de código para ello.
+La generación de código crea el XOR a partir de la expresión: !a AND b OR a AND b
+Teniendo que recargar el valor en la pila para tener a y b 2 veces
+Quizás pudiese hacerse con la orden DUPi o DUPf sin tener que diferenciar esta expresión lógica
+y añadiendo las ordenes al mapa donde están las demás.
+
+La segunda parte consiste en añadir asignación múltiple:
+a, b, c = a1, b1, c1
+
+Manteniendo el valor de las asignaciones previo. es decir a, b = b, a
+b y a deberían tener el valor previo sin afectarle la asignación.
+
+Para ello basta con cambiar el sintáctico para hacer de la asignación 2 listas, modificar el nodo asignación para que admita listas,
+modificar el semántico para que haga las mismas comprobaciones pero con una lista (además de que tengan el mismo número de elementos)
+En la generación de código está la clave para no sobrescribir el valor, para ello generamos en la pila cada par dirección - valor 
+y cuando estén todos generamos en orden inverso las instrucciones STORE.
