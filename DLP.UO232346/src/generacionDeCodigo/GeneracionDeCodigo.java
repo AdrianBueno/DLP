@@ -5,17 +5,17 @@ import java.io.*;
 import ast.*;
 
 /**
- * Esta clase coordina las dos fases principales de la Generación de Código:
- * 1- Gestión de Memoria (asignación de direcciones)
- * 2- Selección de Instrucciones
+ * Esta clase coordina las dos fases principales de la GeneraciÃ³n de CÃ³digo:
+ * 1- GestiÃ³n de Memoria (asignaciÃ³n de direcciones)
+ * 2- SelecciÃ³n de Instrucciones
  * 
  * No es necesario modificar esta clase. En su lugar hay que modificar las clases
- * que son llamadas desde aquí: "GestionDeMemoria.java" y "SeleccionDeInstrucciones.java".
+ * que son llamadas desde aquÃ­: "GestionDeMemoria.java" y "SeleccionDeInstrucciones.java".
  *   
- * @author Raúl Izquierdo, Adrián Bueno
+ * @author  AdriÃ¡n Bueno
  * @version 2
  * 
- * La gestión del SourceHelper se hace desde aquí, de esta forma abstraemos las 2 subfases de la impresión del fichero.
+ * La gestiÃ³n del SourceHelper se hace desde aquÃ­, de esta forma abstraemos las 2 subfases de la impresiÃ³n del fichero.
  *
  */
 public class GeneracionDeCodigo {
