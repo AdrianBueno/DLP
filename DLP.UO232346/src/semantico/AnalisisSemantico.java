@@ -6,14 +6,14 @@ import semantico.visitor.Identificacion;
 import ast.*;
 
 /**
- * Esta clase coordina las dos fases del An·lisis Sem·ntico:
- * 1- Fase de IdentificaciÛn
+ * Esta clase coordina las dos fases del An√°lisis Sem√°ntico:
+ * 1- Fase de Identificaci√≥n
  * 2- Fase de Inferencia
  * 
  * No es necesario modificar esta clase. En su lugar hay que modificar las clases
- * que son llamadas desde aquÌ: "Identificacion.java" y "ComprobacionDeTipos.java"
+ * que son llamadas desde aqu√≠: "Identificacion.java" y "ComprobacionDeTipos.java"
  * 
- * @author Ra˙l Izquierdo
+ * @author Adri√°n Bueno
  *
  */
 public class AnalisisSemantico {
@@ -29,8 +29,8 @@ public class AnalisisSemantico {
 		if (gestorErrores.hayErrores())
 			return;
 
-		ComprobacionDeTipos comprobaciÛn = new ComprobacionDeTipos(gestorErrores);
-		raiz.accept(comprobaciÛn, null);
+		ComprobacionDeTipos comprobaci√≥n = new ComprobacionDeTipos(gestorErrores);
+		raiz.accept(comprobaci√≥n, null);
 	}
 
 	private GestorErrores gestorErrores;
